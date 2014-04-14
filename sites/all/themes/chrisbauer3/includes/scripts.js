@@ -62,7 +62,7 @@ fadeInit = function() {
         item:'.views-row',
         intervalSpeed:9000,
         opacitySpeed:1500,
-        pageDots:true
+        pageDots:false
     };
     fade = new tFade(constants);
 }
