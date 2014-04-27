@@ -54,13 +54,15 @@
     </script>
   <![endif]-->
 </head>
-<body class="<?php print $classes; ?> random-<?php print rand(0,10);?>" <?php print $attributes;?>>
+<body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <div id="skip-link">
     <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
   </div>
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-
+  <script type="text/javascript">
+    fadeInit();
+  </script>  
 </body>
 </html>

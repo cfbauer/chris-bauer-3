@@ -66,24 +66,25 @@
  * @see template_process()
  */
 ?>
-<!-- header -->
-<header id="header" class="wrap">
-    <div class="header-inner">
-        <?php if($is_front): ?>
-            <h1 id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></h1>
-        <?php else: ?>
-            <div id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></div>
-        <?php endif; ?>
-        <?php if(!empty($site_slogan)): ?><h1 class="slogan"><?php print $site_slogan; ?></h1><?php endif; ?>
-        <?php print render($page['header']); ?>
-    </div><!-- /header-inner -->
-</header> <!-- /header -->
-<!-- /banner -->
-<?php if($page['banner']): ?>
-    <div id="banner"><?php print render($page['banner']); ?></div>
-<?php endif; ?>
-<section id="container" class="wrap">
 
+    <!-- header -->
+    <header id="header" class="wrap">
+        <div class="header-inner">
+            <?php if($is_front): ?>
+                <h1 id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></h1>
+            <?php else: ?>
+                <div id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></div>
+            <?php endif; ?>
+            <?php if(!empty($site_slogan)): ?><div class="slogan"><?php print $site_slogan; ?></div><?php endif; ?>
+            <?php print render($page['header']); ?>
+        </div><!-- /header-inner -->
+    </header> <!-- /header -->
+    <!-- /banner -->
+    <?php if($page['banner']): ?>
+        <div id="banner"><?php print render($page['banner']); ?></div>
+    <?php endif; ?>
+
+    <section id="container" class="wrap">
     <!-- content top -->
     <?php if(!empty($page['content_top'])): ?>
         <section id="content-top" class="wrap">
@@ -92,7 +93,7 @@
     <?php endif; ?>
     <!-- main -->
     <section id="main" class="wrap">
-        <!-- print $breadcrumb; -->
+        <?php print $breadcrumb; ?>
         <?php print $messages; ?>
         <!-- sideebar first -->
         <?php if(!empty($page['sidebar_first'])): ?>

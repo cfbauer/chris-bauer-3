@@ -7,23 +7,37 @@
  *   An array containing the breadcrumb links.
  * @return a string containing the breadcrumb output.
  */
+function html5Base_breadcrumb(&$vars) {
+    $breadcrumb = $vars['breadcrumb'];
+    $last = null;
+
+    if(!empty($breadcrumb)) {
+        // Provide a navigational heading to give context for breadcrumb links to screen-reader users. Make the heading invisible with .element-invisible.
+        if(count($breadcrumb) > 1) $last = array_pop($breadcrumb);
+        $output = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+        $output .= '<div class="breadcrumb">' . implode('<span class="arrow">></span>', $breadcrumb);
+        if($last) $output .= '<span class="arrow">></span><span class="current">'.$last.'</span>';
+        $output .= '</div>';
+        return $output;
+    }
+}
 
 /**
  * Override or insert variables into the maintenance page template.
  */
-function chrisbauer3_preprocess_maintenance_page(&$vars) {
+function html5Base_preprocess_maintenance_page(&$vars) {
     // While markup for normal pages is split into page.tpl.php and html.tpl.php,
     // the markup for the maintenance page is all in the single
     // maintenance-page.tpl.php template. So, to have what's done in
-    // chrisbauer3_preprocess_html() also happen on the maintenance page, it has to be
+    // html5Base_preprocess_html() also happen on the maintenance page, it has to be
     // called here.
-    chrisbauer3_preprocess_html($vars);
+    html5Base_preprocess_html($vars);
 }
 
 /**
  * Override or insert variables into the html template.
  */
-function chrisbauer3_preprocess_html(&$vars) {
+function html5Base_preprocess_html(&$vars) {
     // Classes for body element. Allows advanced theming based on context
     // (home page, node of certain type, etc.)
     if (!$vars['is_front']) {
@@ -41,6 +55,7 @@ function chrisbauer3_preprocess_html(&$vars) {
         }
         $vars['classes_array'][] = drupal_html_class('page-' . $page);
         if(count($pageArr) > 1) {
+            $depth = '';
             foreach($pageArr as $key=>$section) {
                 if($key != count($pageArr)-1) {
                     $depth = $depth.'section-';
@@ -49,17 +64,17 @@ function chrisbauer3_preprocess_html(&$vars) {
             }
         } else {
             drupal_add_js('fadeInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
-            drupal_add_js(drupal_get_path('theme', 'chrisbauer3').'/includes/tragic.fade.min.js', array('type'=>'file', 'every_page'=>FALSE));
         }
     } else {
-    
+        drupal_add_js(drupal_get_path('theme', 'html5Base').'/includes/tragic.doomScroll.min.js', array('type'=>'file', 'every_page'=>FALSE));
+        drupal_add_js('scrollInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
     }
 }
 
 /**
  * Override or insert variables into the page template.
  */
-function chrisbauer3_preprocess_page(&$vars) {
+function html5Base_preprocess_page(&$vars) {
 
     // Set a variable for the site name title and logo alt attributes text.
     $slogan_text = $vars['site_slogan'];
@@ -69,23 +84,27 @@ function chrisbauer3_preprocess_page(&$vars) {
     // Set ajax and page-node tpls
     if(isset($_GET['ajax']) && $_GET['ajax'] == 1) {
         $vars['theme_hook_suggestions'] = 'page__ajax';
-    }
-    if(!empty($vars['node'])) {
-        $vars['theme_hook_suggestions'][] = 'page__'. $vars['node']->type;
+    } elseif(!empty($vars['node'])) {
+        if($vars['node']->vid == 533 || $vars['node']->vid == 534) {
+            //$vars['theme_hook_suggestions'][] = 'page__error';
+            $vars['classes_array'][] = 'page-error';
+        } else {
+            $vars['theme_hook_suggestions'][] = 'page__'. $vars['node']->type;
+        }
     }
 }
 
 /**
  * Override or insert variables into the node template.
  */
-function chrisbauer3_preprocess_node(&$vars) {
-    $vars['submitted'] = $vars['date'];
+function html5Base_preprocess_node(&$vars) {
+    $vars['submitted'] = $vars['date'] . ' | ' . $vars['name'];
 }
 
 /**
  * Override or insert variables into the comment template.
  */
-function chrisbauer3_preprocess_comment(&$vars) {
+function html5Base_preprocess_comment(&$vars) {
     $vars['submitted'] = $vars['author'].'<span class="pipe">|</span><span class="date">'.$vars['created'].'</span>';
     if($vars['id']%2 == 0) $vars['comment_stripe'] = 'comment-even';
     else $vars['comment_stripe'] = 'comment-odd';
@@ -94,7 +113,7 @@ function chrisbauer3_preprocess_comment(&$vars) {
 /*
 * Override filter.module's theme_filter_tips() function to disable tips display.
 */
-function chrisbauer3_form_comment_form_alter(&$form, &$form_state, $form_id) {
+function html5Base_form_comment_form_alter(&$form, &$form_state, $form_id) {
     $form['comment_body']['#after_build'][] = 'remove_tips';
 }
 
@@ -104,10 +123,27 @@ function remove_tips(&$form) {
     return $form;
 }
 
+/**
+* Override or insert variables into the block templates.
+*/
+function tragic_2014_preprocess_block(&$vars) {
+  // For bean blocks.
+  if($vars['block']->module == 'bean') {
+    // Get the bean elements.
+    $beans = $vars['elements']['bean'];
+    // There is only 1 bean per block.
+    $bean = $beans[reset(element_children($beans))];
+    // Add bean type classes to the parent block.
+    $vars['classes_array'][] = drupal_html_class('block-bean-' . $bean['#bundle']);
+    // Add template suggestions for bean types.
+    $vars['theme_hook_suggestions'][] = 'block__bean__' . $bean['#bundle'];
+  }
+}
+
 /*
 * Remove description from user login form text fields
 */
-function chrisbauer3_form_user_login_alter(&$form, &$form_state) {
+function html5Base_form_user_login_alter(&$form, &$form_state) {
     $form['name']['#description'] = t('');
     $form['pass'] = array('#type'  => 'password',
         '#title' => t('Password'),
@@ -119,7 +155,7 @@ function chrisbauer3_form_user_login_alter(&$form, &$form_state) {
 /*
 * Override table js to remove sticky behavior.
 */
-function chrisbauer3_js_alter(&$js) {
+function html5Base_js_alter(&$js) {
     unset($js['misc/tableheader.js']);
 }
 
@@ -127,7 +163,7 @@ function chrisbauer3_js_alter(&$js) {
 * Add unique class (mlid) to all menu items.
 * with Menu title as class
 */
-function chrisbauer3_menu_link(&$vars) {
+function html5Base_menu_link(&$vars) {
     $element = $vars['element'];
     $sub_menu = '';
     $id = $element['#original_link']['mlid'];

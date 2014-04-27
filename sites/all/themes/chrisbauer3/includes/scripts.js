@@ -57,6 +57,7 @@ resetFields = function() {
 fadeInit = function() {
     var fade, constants;
 
+
     constants = {
         container:'#banner #block-views-homepage-slider-block-1',
         item:'.views-row',
@@ -67,37 +68,7 @@ fadeInit = function() {
     fade = new tFade(constants);
 }
 
-/*
- *  scrollInit: doomScroll init function
- *  arguments: (none)
-
-scrollInit = function() {
-    var constants, scroll;
-    /* even homepage blocks*/
-    /* scroller */ /*
-        constants = {
-            container:'#banner .view-id-homepage_slider',
-            itemClass:'.views-row',
-            btnLeft:'.prev',
-            btnRight:'.next',
-            btns:true, 
-            pageDots:true,
-            interval:true,
-            intervalSpeed:9900,
-            slideNumber:1,
-            numberShown:1,
-            speed:450,
-            swipe:false
-            /* responsive:true,
-            responsiveEl:'.views-field-field-slider-image img' */ /*
-        };
-        scroll = new dScroll(constants);
-
-};
-*/
 $(document).ready(function() {
     /* default */
     resetFields();
-
-    if($('body.front').length) docFade();
 });

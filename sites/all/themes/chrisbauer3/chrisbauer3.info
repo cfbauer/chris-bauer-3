@@ -7,7 +7,7 @@ engine = phptemplate
 stylesheets[all][] = includes/styles.scss
 stylesheets[print][] = includes/print.css
 scripts[] = includes/scripts.js
-scripts[] = includes/tragic.doomScroll.min.js
+scripts[] = includes/tragic.fade.min.js
 
 regions[header] = Header
 regions[banner] = Banner
