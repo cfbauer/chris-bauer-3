@@ -93,7 +93,6 @@
     <?php endif; ?>
     <!-- main -->
     <section id="main" class="wrap">
-        <?php print $breadcrumb; ?>
         <?php print $messages; ?>
         <!-- sideebar first -->
         <?php if(!empty($page['sidebar_first'])): ?>

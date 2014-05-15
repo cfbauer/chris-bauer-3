@@ -3,7 +3,7 @@
 *   Developer: tragic{media}
 ***********************************/
 
-@font-face{ 
+@font-face { 
 	font-family: 'futura-condensed';
 	src: url('fonts/futura/futurastd-condensed-webfont.eot');
 	src: url('fonts/futura/futurastd-condensed-webfont.eot?#iefix') format('embedded-opentype'),
@@ -26,9 +26,9 @@ $color-sand:#DDCAA0;
 $color-black:#aaa;
 $color-black-transparent:rgba(0, 0, 0, .1);
 
-$font-body:'PT Serif', Georgia, 'Times New Roman', Times, serif;
+$font-body:'Roboto Slab', serif;
 $font-header:futura-condensed, sans-serif;
-$font-size-body:16px;
+$font-size-body:17px;
 $font-size-header:30px;
 $font-size-custom:15px;
 
@@ -37,9 +37,9 @@ $path-img:'../images/';
 $path-sprite:$path-img + 'sprite.png';
 
 $size-full:970px;
-$size-sidebar:250px;
-$size-two-col:830px;
-$size-three-col:624px;
+$size-sidebar:340px;
+$size-two-col:610px;
+$size-three-col:430px;
 
 $header-height:103px;
 
@@ -89,17 +89,19 @@ $header-height:103px;
 */
 
 body {
-	// background:url($path-img + 'background.png');
+	@include font(17px, 24px);
 }
 
 /* global */
 h1, h2, h3, h4, h5, h6 {
 	font-family: $font-header;
+	margin-bottom:10px;
 	
 }
 h1 {
 	font-size:48px;
 	line-height:60px;
+	margin-bottom:15px;
 }
 
 h2 {
@@ -117,12 +119,56 @@ h4 {
 	line-height:30px;
 }
 
+/* form stuff */
+form, form * {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+label {
+	font-family:$font-header;
+	color:$color-link-hover;
+	font-size:24px;
+	line-height:26px;
+	letter-spacing:1px;
+}
+input[type=submit] {
+	font-family:$font-header;
+	font-size:18px;
+	line-height:22px;
+	background:$color-green;
+	color:#fff;
+	border:none;
+	padding:10px 20px;
+	&:hover {
+		background:$color-link-hover;
+	}
+	&:active {
+		background:rgba($color-link-hover, .8);
+	}
+}
+input[type=text], input[type=email], textarea {
+	width:250px;
+	background: #ddd;
+	border:none;
+	padding:4px 10px;
+	font-family:$font-body;
+	font-size:14px;
+	color:#333333;
+}
+input[type=text], input[type=email] {
+	height:36px;
+	line-height:28px;
+}
+.form-item {
+	margin-top:0;
+}
+
 /* layout */
 #container {
-	position:relative;
-	z-index:3;
 	background:#fff;
-	padding:40px;
+	padding:25px 40px;
 	@include box-shadow($x:0px, $y:2px, $blur:2px, $spread:0px,$color:$color-black-transparent);
 }
 
@@ -139,6 +185,7 @@ h4 {
 	margin-bottom:100px;
 	z-index:2;
 	position:relative;
+	@include text-shadow(1px, 1px, 1px, #ffffff);
 	.header-inner {
 		width:$size-full;
 		margin:0 auto;
@@ -163,6 +210,7 @@ h4 {
 		margin:0;
 		text-transform:lowercase;
 		color:#555;
+		font-family:$font-header;
 	}
 
 	#block-system-main-menu {
@@ -195,7 +243,7 @@ h4 {
 /* page specific */
 
 /* front */
-body.page-home {
+body.page-home, body.page-node-4 {
 	#header {
 		width:100%;
 		margin-bottom:300px;
@@ -205,6 +253,8 @@ body.page-home {
 	}
 	#container {
 		background:none;
+		position:relative;
+		z-index:3;
 		@include box-shadow($x:0px, $y:2px, $blur:0px, $spread:0px,$color:$color-black-transparent);
 	}
 	#content {
@@ -232,11 +282,11 @@ body.page-home {
 		}
 	}
 	.color-overlay {
-			background:rgba(238, 238, 238, .1);
-			width:100%;
-			position:absolute;
-			height:530px;
-			top:0;
+		// background:rgba(238, 238, 238, .1);
+		width:100%;
+		position:absolute;
+		height:530px;
+		top:0;
 	}	
 	.slider-content {
 		position:absolute;
@@ -295,6 +345,14 @@ body.page-home {
 		.views-row {
 			position:relative;
 			margin-bottom:40px;
+			&:hover a {
+				color:$color-link-hover;
+				@include text-shadow(1px, 1px, 0px, rgba(255, 255, 255, .5));			
+
+			}
+			&:hover .color-overlay {
+				opacity:.7;
+			}
 		}
 		.views-field-title {
 			position:absolute;
@@ -304,14 +362,66 @@ body.page-home {
 			h3 {
 				font-size:66px;
 				line-height:70px;
+				a {
+					@include text-shadow(1px, 1px, 0px, rgba(0, 0, 0, .5));
+					-moz-transition: all .15s;
+					-webkit-transition: all .15s;
+					-o-transition: all .15s;
+					transition: all .15s;
+				}
 			}
 		}
 		.color-overlay {
+			/* previous method of doing it, not sure new one will work 
 			background:rgba(255, 255, 255, .7);
 			width:100%;
 			position:absolute;
 			height:530px;
-			top:0;
+			top:0; */
+			opacity:.4;
+			-moz-transition: all .15s;
+			-webkit-transition: all .15s;
+			-o-transition: all .15s;
+			transition: all .15s;			
 		}
+	}
+}
+
+/* standard page */
+.not-front {
+	.field-name-field-banner-image {
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:-1;
+		width:100%;
+		img {
+			width:100%;
+			height:auto;
+		}
+	}
+}
+
+/* services page */
+
+/*contact form */
+#block-webform-client-block-12 {
+	input[type=submit] {
+		width:100%;
+	}
+	label {
+		width:90px;
+		font-size:16px;
+		line-height:36px;
+		height:36px;
+		float:left;
+		clear:both;
+		margin-right:20px;
+	}
+	input[type=text], input[type=email] {
+		width:230px;
+	}
+	#webform-component-email-address {
+		margin-bottom:12px;
 	}
 }

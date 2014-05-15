@@ -7,7 +7,7 @@
  *   An array containing the breadcrumb links.
  * @return a string containing the breadcrumb output.
  */
-function html5Base_breadcrumb(&$vars) {
+function chrisbauer3_breadcrumb(&$vars) {
     $breadcrumb = $vars['breadcrumb'];
     $last = null;
 
@@ -25,19 +25,19 @@ function html5Base_breadcrumb(&$vars) {
 /**
  * Override or insert variables into the maintenance page template.
  */
-function html5Base_preprocess_maintenance_page(&$vars) {
+function chrisbauer3_preprocess_maintenance_page(&$vars) {
     // While markup for normal pages is split into page.tpl.php and html.tpl.php,
     // the markup for the maintenance page is all in the single
     // maintenance-page.tpl.php template. So, to have what's done in
-    // html5Base_preprocess_html() also happen on the maintenance page, it has to be
+    // chrisbauer3_preprocess_html() also happen on the maintenance page, it has to be
     // called here.
-    html5Base_preprocess_html($vars);
+    chrisbauer3_preprocess_html($vars);
 }
 
 /**
  * Override or insert variables into the html template.
  */
-function html5Base_preprocess_html(&$vars) {
+function chrisbauer3_preprocess_html(&$vars) {
     // Classes for body element. Allows advanced theming based on context
     // (home page, node of certain type, etc.)
     if (!$vars['is_front']) {
@@ -66,7 +66,7 @@ function html5Base_preprocess_html(&$vars) {
             drupal_add_js('fadeInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
         }
     } else {
-        drupal_add_js(drupal_get_path('theme', 'html5Base').'/includes/tragic.doomScroll.min.js', array('type'=>'file', 'every_page'=>FALSE));
+        drupal_add_js(drupal_get_path('theme', 'chrisbauer3').'/includes/tragic.doomScroll.min.js', array('type'=>'file', 'every_page'=>FALSE));
         drupal_add_js('scrollInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
     }
 }
@@ -74,7 +74,7 @@ function html5Base_preprocess_html(&$vars) {
 /**
  * Override or insert variables into the page template.
  */
-function html5Base_preprocess_page(&$vars) {
+function chrisbauer3_preprocess_page(&$vars) {
 
     // Set a variable for the site name title and logo alt attributes text.
     $slogan_text = $vars['site_slogan'];
@@ -97,14 +97,14 @@ function html5Base_preprocess_page(&$vars) {
 /**
  * Override or insert variables into the node template.
  */
-function html5Base_preprocess_node(&$vars) {
+function chrisbauer3_preprocess_node(&$vars) {
     $vars['submitted'] = $vars['date'] . ' | ' . $vars['name'];
 }
 
 /**
  * Override or insert variables into the comment template.
  */
-function html5Base_preprocess_comment(&$vars) {
+function chrisbauer3_preprocess_comment(&$vars) {
     $vars['submitted'] = $vars['author'].'<span class="pipe">|</span><span class="date">'.$vars['created'].'</span>';
     if($vars['id']%2 == 0) $vars['comment_stripe'] = 'comment-even';
     else $vars['comment_stripe'] = 'comment-odd';
@@ -113,7 +113,7 @@ function html5Base_preprocess_comment(&$vars) {
 /*
 * Override filter.module's theme_filter_tips() function to disable tips display.
 */
-function html5Base_form_comment_form_alter(&$form, &$form_state, $form_id) {
+function chrisbauer3_form_comment_form_alter(&$form, &$form_state, $form_id) {
     $form['comment_body']['#after_build'][] = 'remove_tips';
 }
 
@@ -143,7 +143,7 @@ function tragic_2014_preprocess_block(&$vars) {
 /*
 * Remove description from user login form text fields
 */
-function html5Base_form_user_login_alter(&$form, &$form_state) {
+function chrisbauer3_form_user_login_alter(&$form, &$form_state) {
     $form['name']['#description'] = t('');
     $form['pass'] = array('#type'  => 'password',
         '#title' => t('Password'),
@@ -155,7 +155,7 @@ function html5Base_form_user_login_alter(&$form, &$form_state) {
 /*
 * Override table js to remove sticky behavior.
 */
-function html5Base_js_alter(&$js) {
+function chrisbauer3_js_alter(&$js) {
     unset($js['misc/tableheader.js']);
 }
 
@@ -163,7 +163,7 @@ function html5Base_js_alter(&$js) {
 * Add unique class (mlid) to all menu items.
 * with Menu title as class
 */
-function html5Base_menu_link(&$vars) {
+function chrisbauer3_menu_link(&$vars) {
     $element = $vars['element'];
     $sub_menu = '';
     $id = $element['#original_link']['mlid'];
