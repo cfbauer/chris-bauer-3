@@ -98,7 +98,7 @@ function chrisbauer3_preprocess_page(&$vars) {
  * Override or insert variables into the node template.
  */
 function chrisbauer3_preprocess_node(&$vars) {
-    $vars['submitted'] = $vars['date'] . ' | ' . $vars['name'];
+    $vars['submitted'] = $vars['date'] . ' | by ' . $vars['name'];
 }
 
 /**

@@ -1,6 +1,6 @@
 /***********************************
-*   html5base stylesheet
-*   Developer: tragic{media}
+*   chrisbauer.org 3.0 stylesheet
+*   Developer: chris bauer
 ***********************************/
 
 @font-face { 
@@ -95,13 +95,14 @@ body {
 /* global */
 h1, h2, h3, h4, h5, h6 {
 	font-family: $font-header;
-	margin-bottom:10px;
+	margin-bottom:5px;
 	
 }
 h1 {
 	font-size:48px;
 	line-height:60px;
-	margin-bottom:15px;
+	margin-bottom:20px;
+	@include text-shadow(1px, 1px, 1px, #ffffff);
 }
 
 h2 {
@@ -164,6 +165,9 @@ input[type=text], input[type=email] {
 .form-item {
 	margin-top:0;
 }
+.submitted {
+	margin-bottom:10px;
+}
 
 /* layout */
 #container {
@@ -179,9 +183,13 @@ input[type=text], input[type=email] {
 	width:100% !important;
 }
 
+.region-content p img {
+	margin:0 20px 20px 20px;
+}
+
 /* blocks */
 #header {
-	background:rgba(255, 255, 255, .7);
+	background:rgba(255, 255, 255, .8);
 	margin-bottom:100px;
 	z-index:2;
 	position:relative;
@@ -227,12 +235,12 @@ input[type=text], input[type=email] {
 				float:left;
 				margin-left:45px;
 				a {
-					color:$color-green;
+					color:#555555;
 					&:hover {
-						color:#555;
+						color:$color-green;
 					}
 					&.active {
-						color:#555;
+						color:$color-green;
 					}
 				}
 			}
@@ -240,22 +248,33 @@ input[type=text], input[type=email] {
 	}
 }
 
+footer {
+	width:$size-full;
+	margin:0 auto;
+	color:#aaaaaa;
+	font-size:11px;
+}
+
 /* page specific */
 
 /* front */
 body.page-home, body.page-node-4 {
+	#container {
+		margin-bottom:0;
+
+	}
 	#header {
 		width:100%;
-		margin-bottom:300px;
+		margin-bottom:265px;
 		#block-system-main-menu ul li.menu-home a {
-			color:#555555;
+			color:$color-green;
 		}
 	}
 	#container {
 		background:none;
 		position:relative;
 		z-index:3;
-		@include box-shadow($x:0px, $y:2px, $blur:0px, $spread:0px,$color:$color-black-transparent);
+		@include box-shadow($color:rgba(0, 0, 0, 0));
 	}
 	#content {
 		#page-title {
@@ -332,6 +351,9 @@ body.page-home, body.page-node-4 {
 
 /* internal pages */
 .not-front {
+	#container {
+		margin-bottom:45px;
+	}
 	#header {
 		// margin-bottom:50px;
 	}
@@ -340,6 +362,9 @@ body.page-home, body.page-node-4 {
 .page-blog {
 	h1 {
 		display:none;
+	}
+	#container {
+		padding:40px;
 	}
 	.view-id-blog {
 		.views-row {
@@ -351,13 +376,14 @@ body.page-home, body.page-node-4 {
 
 			}
 			&:hover .color-overlay {
-				opacity:.7;
+				opacity:.85;
 			}
 		}
 		.views-field-title {
 			position:absolute;
 			right:20px;
 			top:15px;
+			left:15px;
 			z-index:4;
 			h3 {
 				font-size:66px;
@@ -372,18 +398,18 @@ body.page-home, body.page-node-4 {
 			}
 		}
 		.color-overlay {
-			/* previous method of doing it, not sure new one will work 
-			background:rgba(255, 255, 255, .7);
-			width:100%;
-			position:absolute;
-			height:530px;
-			top:0; */
-			opacity:.4;
+			opacity:.6;
 			-moz-transition: all .15s;
 			-webkit-transition: all .15s;
 			-o-transition: all .15s;
 			transition: all .15s;			
 		}
+	}
+}
+
+.node-type-blog-entry {
+	#container {
+		width:710px; /* smaller width, include dat padding though for da grid */
 	}
 }
 

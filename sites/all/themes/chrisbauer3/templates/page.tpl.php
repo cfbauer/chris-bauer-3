@@ -75,7 +75,9 @@
             <?php else: ?>
                 <div id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></div>
             <?php endif; ?>
-            <?php if(!empty($site_slogan)): ?><div class="slogan"><?php print $site_slogan; ?></div><?php endif; ?>
+            <?php if(!empty($site_slogan)): ?>
+                <a href="/" title="<?php print $site_name; ?>"/><div class="slogan"><?php print $site_slogan; ?></div><a>
+            <?php endif; ?>
             <?php print render($page['header']); ?>
         </div><!-- /header-inner -->
     </header> <!-- /header -->
@@ -128,8 +130,8 @@
         </section>
     <?php endif; ?>
     <!-- footer -->
-    <footer id="footer" class="wrap">
-        <?php print render($page['footer']); ?>
-    </footer><!-- /footer -->
 </section> <!-- /container -->
-
+<footer id="footer" class="wrap">
+    <?php print render($page['footer']); ?>
+    <p class="copyright">&copy; <?php echo date('Y'); ?> <a href="/">Chris Bauer</a>. All rights and wrongs reserved.</p>
+</footer><!-- /footer -->
