@@ -49,11 +49,11 @@ resetFields = function() {
             if(this.value == '') this.value = this.defaultValue;
         }
     }
-},
+};
 /*
  *  fadeInit: handles homepage fade init
  *  arguments: ()
-*/
+
 fadeInit = function() {
     var fade, constants;
 
@@ -66,9 +66,9 @@ fadeInit = function() {
         pageDots:false
     };
     fade = new tFade(constants);
-},
+} */
 
-/* initialize slimmenu */
+/* initialize slimmenu
 slimMenu = function() {
     $('#block-system-main-menu .menu').slimmenu(
     {
@@ -79,9 +79,22 @@ slimMenu = function() {
         indentChildren: false,
         childrenIndenter: '&nbsp;'
     });
-}
+}; */
 
 $(document).ready(function() {
+    $('.view-homepage-slider .view-content').slick({
+          dots: false,
+          arrows:false,
+          infinite: true,
+          speed: 1800,
+          autoplaySpeed:13000,
+          fade: true,
+          slide: '.views-row',
+          cssEase: 'linear',
+          autoplay:true
+    });
+
+
     /* default */
     resetFields();
 });

@@ -5,10 +5,14 @@ version = 1.0
 engine = phptemplate
 
 stylesheets[all][] = includes/styles.scss
+stylesheets[all][] = includes/slick/slick.scss
 stylesheets[all][] = includes/slimmenu.scss
+
 stylesheets[print][] = includes/print.css
+
 scripts[] = includes/scripts.js
-scripts[] = includes/tragic.fade.min.js
+
+
 scripts[] = includes/jquery.slimmenu.js
 
 regions[header] = Header

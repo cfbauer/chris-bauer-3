@@ -63,7 +63,7 @@ function chrisbauer3_preprocess_html(&$vars) {
                 }
             }
         } else {
-            drupal_add_js('fadeInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
+            // drupal_add_js('fadeInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
         }
     } else {
     
