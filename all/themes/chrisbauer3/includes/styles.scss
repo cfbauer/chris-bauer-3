@@ -120,6 +120,13 @@ h4 {
 	line-height:30px;
 }
 
+hr {
+	height:0px;
+	border:none;
+	border-top:1px solid #ddd;
+	margin:0 0 20px 0;
+}
+
 /* form stuff */
 form, form * {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */

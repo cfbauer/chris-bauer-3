@@ -66,6 +66,19 @@ fadeInit = function() {
         pageDots:false
     };
     fade = new tFade(constants);
+},
+
+/* initialize slimmenu */
+slimMenu = function() {
+    $('#block-system-main-menu .menu').slimmenu(
+    {
+        resizeWidth: '800',
+        collapserTitle: 'Main Menu',
+        animSpeed: 'medium',
+        easingEffect: null,
+        indentChildren: false,
+        childrenIndenter: '&nbsp;'
+    });
 }
 
 $(document).ready(function() {

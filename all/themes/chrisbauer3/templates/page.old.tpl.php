@@ -71,7 +71,7 @@
     <header id="header" class="wrap">
         <div class="header-inner">
             <?php if($is_front): ?>
-                <h2 id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></h2>
+                <h1 id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></h1>
             <?php else: ?>
                 <div id="logo" title="<?php print $site_name; ?>"><a href="/" title="<?php print $site_name; ?>"><img src="<?php print base_path().path_to_theme(); ?>/images/logo.png" alt="<?php print $site_name; ?>" /></a></div>
             <?php endif; ?>
@@ -108,7 +108,7 @@
             <?php if($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
             <?php print render($page['help']); ?>
             <?php if($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
-            <?php if($title): ?>
+            <?php if($title && !$is_front): ?>
                 <?php print render($title_prefix); ?>
                 <h1 class="title" id="page-title"><?php print $title; ?></h1>
                 <?php print render($title_suffix); ?>

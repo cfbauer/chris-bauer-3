@@ -66,8 +66,7 @@ function chrisbauer3_preprocess_html(&$vars) {
             drupal_add_js('fadeInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
         }
     } else {
-        drupal_add_js(drupal_get_path('theme', 'chrisbauer3').'/includes/tragic.doomScroll.min.js', array('type'=>'file', 'every_page'=>FALSE));
-        drupal_add_js('scrollInit()', array('type'=>'inline', 'scope'=>'footer', 'every_page'=>FALSE));
+    
     }
 }
 
