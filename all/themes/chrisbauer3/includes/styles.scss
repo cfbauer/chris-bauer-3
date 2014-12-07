@@ -458,3 +458,52 @@ body.page-home, body.page-node-4 {
 		margin-bottom:12px;
 	}
 }
+
+@media all and (max-width:1065px) {
+	#header .header-inner,
+	#container,
+	footer {
+		width:100%;
+		box-sizing:border-box;
+	}
+	#header {
+		padding:0 20px;
+		box-sizing:border-box;
+	}
+}
+
+@media all and (max-width:800px) {
+
+	#header #logo {
+		margin-bottom:0;
+	}
+
+	.region-header {
+		padding:55px 10px 0 0;
+	}
+
+	.collapse-button {
+		float:right;
+	}
+
+	#header #block-system-main-menu {
+		float:none;
+		clear:both;
+		ul li {
+			clear:both;
+			line-height:48px;
+			font-size:28px;
+			float:none;
+			text-align:center;
+		}
+	}
+
+	body.page-home ,body.page-node-4 {
+		#header {
+			margin-bottom:165px;
+		}
+		#content #page-title, #content .field-name-body {
+			width:100%;
+		}
+	}
+}

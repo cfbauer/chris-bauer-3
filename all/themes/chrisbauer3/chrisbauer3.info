@@ -12,9 +12,6 @@ stylesheets[print][] = includes/print.css
 
 scripts[] = includes/scripts.js
 
-
-scripts[] = includes/jquery.slimmenu.js
-
 regions[header] = Header
 regions[banner] = Banner
 regions[highlighted] = Highlighted

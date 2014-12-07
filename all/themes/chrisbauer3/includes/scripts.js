@@ -50,38 +50,9 @@ resetFields = function() {
         }
     }
 };
-/*
- *  fadeInit: handles homepage fade init
- *  arguments: ()
-
-fadeInit = function() {
-    var fade, constants;
-
-
-    constants = {
-        container:'#banner #block-views-homepage-slider-block-1',
-        item:'.views-row',
-        intervalSpeed:9000,
-        opacitySpeed:1500,
-        pageDots:false
-    };
-    fade = new tFade(constants);
-} */
-
-/* initialize slimmenu
-slimMenu = function() {
-    $('#block-system-main-menu .menu').slimmenu(
-    {
-        resizeWidth: '800',
-        collapserTitle: 'Main Menu',
-        animSpeed: 'medium',
-        easingEffect: null,
-        indentChildren: false,
-        childrenIndenter: '&nbsp;'
-    });
-}; */
 
 $(document).ready(function() {
+
     $('.view-homepage-slider .view-content').slick({
           dots: false,
           arrows:false,
@@ -94,6 +65,15 @@ $(document).ready(function() {
           autoplay:true
     });
 
+    $('#block-system-main-menu').slimmenu(
+        {
+            resizeWidth: '800',
+            collapserTitle: '',
+            animSpeed: 'fast',
+            easingEffect: null,
+            indentChildren: false,
+            childrenIndenter: '&nbsp;'
+        });
 
     /* default */
     resetFields();
