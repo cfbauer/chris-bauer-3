@@ -66,5 +66,6 @@
   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="<?php print $directory ?>/includes/slick/slick.min.js"></script>
   <script type="text/javascript" src="<?php print $directory ?>/includes/jquery.slimmenu.js"></script>
+  <script type="text/javascript" src="<?php print $directory ?>/includes/masonry.pkgd.js"></script>
 </body>
 </html>

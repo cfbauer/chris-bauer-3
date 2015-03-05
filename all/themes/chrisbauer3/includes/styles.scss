@@ -43,6 +43,10 @@ $size-three-col:430px;
 
 $header-height:103px;
 
+@mixin card() {
+	@include box-shadow($x:0px, $y:2px, $blur:2px, $spread:0px,$color:$color-black-transparent);
+}
+
 // FORM MIXINS (adjust colors per site)
 @mixin form-submit($color:#fff) {
     display:block;
@@ -180,7 +184,7 @@ input[type=text], input[type=email] {
 #container {
 	background:#fff;
 	padding:25px 40px;
-	@include box-shadow($x:0px, $y:2px, $blur:2px, $spread:0px,$color:$color-black-transparent);
+	@include card();	
 }
 
 #banner {
@@ -373,10 +377,19 @@ body.page-home, body.page-node-4 {
 	#container {
 		padding:40px;
 	}
+	.wrap {
+		overflow:visible;
+	}
 	.view-id-blog {
 		.views-row {
 			position:relative;
-			margin-bottom:40px;
+			margin:0 20px 40px 0;
+			width:300px; /* added for masonry */
+			float:left; /* masonry */
+			overflow:visible;
+			@include card();
+			border-bottom:3px solid $color-green;
+			border-top:1px solid #eee;
 			&:hover a {
 				color:$color-link-hover;
 				@include text-shadow(1px, 1px, 0px, rgba(255, 255, 255, .5));			
@@ -385,18 +398,19 @@ body.page-home, body.page-node-4 {
 			&:hover .color-overlay {
 				opacity:.85;
 			}
+			
 		}
 		.views-field-title {
-			position:absolute;
-			right:20px;
-			top:15px;
-			left:15px;
+			padding:15px;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing: border-box;
+			box-sizing:border-box;
 			z-index:4;
 			h3 {
-				font-size:66px;
-				line-height:70px;
+				font-size:36px;
+				line-height:40px;
 				a {
-					@include text-shadow(1px, 1px, 0px, rgba(0, 0, 0, .5));
+					// @include text-shadow(1px, 1px, 0px, rgba(0, 0, 0, .5));
 					-moz-transition: all .15s;
 					-webkit-transition: all .15s;
 					-o-transition: all .15s;
@@ -411,6 +425,13 @@ body.page-home, body.page-node-4 {
 			-o-transition: all .15s;
 			transition: all .15s;			
 		}
+		.views-field-field-main-blog-image img {
+			width: 100%;
+			height: auto;
+		}
+	}
+	.feed-icon {
+		display:none;
 	}
 }
 

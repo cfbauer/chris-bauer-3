@@ -65,6 +65,7 @@ $(document).ready(function() {
           autoplay:true
     });
 
+
     $('#block-system-main-menu').slimmenu(
         {
             resizeWidth: '800',
@@ -74,6 +75,19 @@ $(document).ready(function() {
             indentChildren: false,
             childrenIndenter: '&nbsp;'
         });
+
+
+
+    // $('.page-blog .view-id-blog').addClass('js-masonry');
+
+    /* initialize masonry */
+    var $container = $('.page-blog .view-id-blog');
+    $container.masonry({
+        // columnWidth: 250,
+        itemSelector: '.views-row'
+    });
+    var msnry = $container.data('masonry');
+
 
     /* default */
     resetFields();
