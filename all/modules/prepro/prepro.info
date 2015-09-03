@@ -3,9 +3,9 @@ description = Provides an API for modules to offer preprocessing for stylesheets
 core = 7.x
 configure = admin/config/media/prepro
 
-; Information added by drupal.org packaging script on 2013-03-28
-version = "7.x-1.2"
+; Information added by Drupal.org packaging script on 2014-08-12
+version = "7.x-1.4"
 core = "7.x"
 project = "prepro"
-datestamp = "1364458525"
+datestamp = "1407854044"
 

@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Install, uninstall and update the module.
+ */
+
+/**
  * Implements hook_schema().
  */
 function prepro_schema() {
@@ -43,7 +48,7 @@ function prepro_update_7000() {
 }
 
 /**
- * Update settings variable
+ * Update settings variable.
  */
 function prepro_update_7101() {
   if (module_exists('sassy')) {
@@ -53,12 +58,12 @@ function prepro_update_7101() {
         'sass' => array(
           'compile_handler' => 'sassy/sassy',
           'cache_handler' => 'prepro/cache',
-          'cache_path' => 'public://prepro'
+          'cache_path' => 'public://prepro',
         ),
         'scss' => array(
           'compile_handler' => 'sassy/sassy',
           'cache_handler' => 'prepro/cache',
-          'cache_path' => 'public://prepro'
+          'cache_path' => 'public://prepro',
         ),
         'show_warnings' => TRUE,
       ),
